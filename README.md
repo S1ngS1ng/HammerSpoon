@@ -1,0 +1,2 @@
+# HammerSpoon
+HammerSpoon config file
