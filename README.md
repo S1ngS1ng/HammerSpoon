@@ -1,7 +1,7 @@
 # HammerSpoon
 HammerSpoon config file
 
-# Fetures
+# Features
 **All keyboard shortcuts**
 > Based on grid system, it is easy to customize
 
