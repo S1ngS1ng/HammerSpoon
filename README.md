@@ -1,16 +1,38 @@
 # HammerSpoon
 HammerSpoon config file
+=======
+
+> tl;dr [Click Me](#install)
 
 # Features
 **All keyboard shortcuts**
-> Based on grid system, it is easy to customize
+> Based on grid system, easy to customize
 
-* Maximize window (not the fullscreen mode)
+* Maximize window (not the full-screen mode)
 * Move window to another screen
 * Set window size **immediately** to half of the current screen toward **ANY** direction
 * Stretch or shrink window size toward **ANY** direction
 
 > Note that: I could add a `move window` feature to this, but I found it not useful to me.
+
+# Example
+> In case you might get confused
+
+* Centering and Maximize
+
+![Imgur](http://i.imgur.com/okNaoJW.gif)
+
+* Half the screen
+
+![Imgur](http://i.imgur.com/VNo7nCI.gif)
+
+* Resize (anchor top, left)
+
+![Imgur](http://i.imgur.com/vIqDMUD.gif)
+
+* Resize (anchor bottom, right)
+
+![Imgur](http://i.imgur.com/fiIfeXe.gif)
 
 # Install
 
@@ -41,25 +63,6 @@ HammerSpoon config file
 	* `Alt-Command-Shift + Right`	Move Left edge to the Right
 	* `Alt-Command-Shift + Up`		Move Top edge Up
 	* `Alt-Command-Shift + Down`	Move Top edge Down
-
-# Example
-> Incase you might be confused
-
-* Centering and Maximize
-
-![Imgur](http://i.imgur.com/okNaoJW.gif)
-
-* Half the screen
-
-![Imgur](http://i.imgur.com/VNo7nCI.gif)
-
-* Resize (anchor top, left)
-
-![Imgur](http://i.imgur.com/vIqDMUD.gif)
-
-* Resize (anchor bottom, right)
-
-![Imgur](http://i.imgur.com/fiIfeXe.gif)
 
 # Tips
 
