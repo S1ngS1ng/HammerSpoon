@@ -100,6 +100,32 @@ function vox.previous()
   tell('previous track')
 end
 
+--- hs.vox.rewindForward()
+--- Function
+--- Skips the playback position forwards by about 5 seconds
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.rewindForward()
+  tell('rewindforward')
+end
+
+--- hs.vox.rewindBackward()
+--- Function
+--- Skips the playback position backwards by about 5 seconds
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.rewindForward()
+  tell('rewindbackward')
+end
+
 --- hs.vox.trackInfo()
 --- Function
 --- Displays information for current track on screen
@@ -126,7 +152,7 @@ end
 --- Returns:
 ---  * A string containing the Artist of the current track, or nil if an error occurred
 function vox.getCurrentArtist()
-  return tell('artist')
+  return tell('artist') or "Unknown artist"
 end
 
 --- hs.vox.getCurrentAlbum()
@@ -139,7 +165,7 @@ end
 --- Returns:
 ---  * A string containing the Album of the current track, or nil if an error occurred
 function vox.getCurrentAlbum()
-  return tell('album')
+  return tell('album') or "Unknown album"
 end
 
 --- hs.vox.getAlbumArtist()
@@ -152,20 +178,122 @@ end
 --- Returns:
 ---  * A string containing the artist of current Album, or nil if an error occurred
 function vox.getAlbumArtist()
-  return tell('album artist')
+  return tell('albumArtist') or "Unknown album artist"
 end
 
---- hs.vox.getCurrentTrack()
+--- hs.vox.getUniqueID()
 --- Function
---- Gets the name of the current track
+--- Gets the uniqueID of the current track
 ---
 --- Parameters:
 ---  * None
 ---
 --- Returns:
 ---  * A string containing the name of the current track, or nil if an error occurred
-function vox.getCurrentTrack()
-  return tell('track')
+function vox.getUniqueID()
+  return tell('uniqueID') or "Unknown ID"
+end
+
+--- hs.vox.getPlayerState()
+--- Function
+--- Gets the current playback state of vox
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * 0 for paused
+---  * 1 for playing
+function vox.getPlayerState()
+  return tell('playerState')
+end
+
+--- TODO: VERIFY BELOW
+--- hs.vox.isRunning()
+--- Function
+--- Returns whether vox is currently open. Most other functions in hs.vox will automatically start the application, so this function can be used to guard against that.
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * A boolean value indicating whether the vox application is running.
+function vox.isRunning()
+  return app.get("vox") ~= nil
+end
+
+--- hs.vox.getVolume()
+--- Function
+--- Gets the vox volume setting
+---
+--- Paramters:
+---  * None
+---
+--- Returns:
+---  * A number containing the volume vox is set to between 1 and 100
+function vox.getVolume() return tell'sound volume' end
+
+--- hs.vox.setVolume(vol)
+--- Function
+--- Sets the vox volume setting
+---
+--- Parameters:
+---  * vol - A number between 1 and 100
+---
+--- Returns:
+---  * None
+function vox.setVolume(v)
+  v=tonumber(v)
+  if not v then error('volume must be a number 1..100',2) end
+  return tell('set sound volume to '..math.min(100,math.max(0,v)))
+end
+
+--- hs.vox.volumeUp()
+--- Function
+--- Increases the volume by 5
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.volumeUp() return vox.setVolume(vox.getVolume()+5) end
+
+--- hs.vox.volumeDown()
+--- Function
+--- Reduces the volume by 5
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.volumeDown() return vox.setVolume(vox.getVolume()-5) end
+
+--- hs.vox.getPosition()
+--- Function
+--- Gets the playback position (in seconds) in the current song
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * A number indicating the current position in the song
+function vox.getPosition() return tell'player position' end
+
+--- hs.vox.setPosition(pos)
+--- Function
+--- Sets the playback position in the current song
+---
+--- Parameters:
+---  * pos - A number containing the position (in seconds) to jump to in the current song
+---
+--- Returns:
+---  * None
+function vox.setPosition(p)
+  p=tonumber(p)
+  if not p then error('position must be a number in seconds',2) end
+  return tell('set player position to '..p)
 end
 
 return vox
