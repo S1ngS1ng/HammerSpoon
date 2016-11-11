@@ -1,28 +1,16 @@
 --- === hs.vox ===
 ---
---- Controls for vox music player
+--- Controls for VOX music player
+
+------------------------------------------------
+---            Global Declaration            ---
+------------------------------------------------
 
 local vox = {}
 
 local alert = require "hs.alert"
 local as = require "hs.applescript"
 local app = require "hs.application"
-
---  TODO: DOUBLE CHECK
---- hs.vox.state_paused
---- Constant
---- Returned by `hs.vox.getPlaybackState()` to indicates vox is paused
-vox.state_paused = "kPSp"
-
---- hs.vox.state_playing
---- Constant
---- Returned by `hs.vox.getPlaybackState()` to indicates vox is playing
-vox.state_playing = "kPSP"
-
---- hs.vox.state_stopped
---- Constant
---- Returned by `hs.vox.getPlaybackState()` to indicates vox is stopped
-vox.state_stopped = "kPSS"
 
 -- Internal function to pass a command to Applescript.
 local function tell(cmd)
@@ -35,17 +23,36 @@ local function tell(cmd)
   end
 end
 
---- hs.vox.playpause()
+-- TODO: VERIFY
+-- --- hs.vox.state_paused
+-- --- Constant
+-- --- Returned by `hs.vox.getPlaybackState()` to indicates vox is paused
+-- vox.state_paused = "kPSp"
+--
+-- --- hs.vox.state_playing
+-- --- Constant
+-- --- Returned by `hs.vox.getPlaybackState()` to indicates vox is playing
+-- vox.state_playing = "kPSP"
+--
+-- --- hs.vox.state_stopped
+-- --- Constant
+-- --- Returned by `hs.vox.getPlaybackState()` to indicates vox is stopped
+-- vox.state_stopped = "kPSS"
+
+------------------------------------------------
+---              Basic Command               ---
+------------------------------------------------
+--- hs.vox.pause()
 --- Function
---- Toggles play/pause of current vox track
+--- Pauses the current vox track
 ---
 --- Parameters:
 ---  * None
 ---
 --- Returns:
 ---  * None
-function vox.playpause()
-  tell('playpause')
+function vox.pause()
+  tell('pause')
 end
 
 --- hs.vox.play()
@@ -61,17 +68,17 @@ function vox.play()
   tell('play')
 end
 
---- hs.vox.pause()
+--- hs.vox.playpause()
 --- Function
---- Pauses the current vox track
+--- Toggles play/pause of current vox track
 ---
 --- Parameters:
 ---  * None
 ---
 --- Returns:
 ---  * None
-function vox.pause()
-  tell('pause')
+function vox.playpause()
+  tell('playpause')
 end
 
 --- hs.vox.next()
@@ -100,30 +107,121 @@ function vox.previous()
   tell('previous track')
 end
 
---- hs.vox.rewindForward()
+--- hs.vox.shuffle()
 --- Function
---- Skips the playback position forwards by about 5 seconds
+--- Toggle shuffle state of current list
 ---
 --- Parameters:
 ---  * None
 ---
 --- Returns:
 ---  * None
-function vox.rewindForward()
+function vox.shuffle()
+  tell('shuffle')
+end
+
+--- hs.vox.playurl(url)
+--- Function
+--- Play media from the given URL
+---
+--- Parameters:
+---  * url {string}
+---
+--- Returns:
+---  * None
+function vox.playurl(url)
+  tell('playurl \"' .. url .. '\"')
+end
+
+--- hs.vox.addurl(url)
+--- Function
+--- Add media URL to current list
+---
+--- Parameters:
+---  * url {string}
+---
+--- Returns:
+---  * None
+function vox.addurl(url)
+  tell('addurl \"' .. url .. '\"')
+end
+
+--- hs.vox.forward()
+--- Function
+--- Skips the playback position forwards by about 7 seconds
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.forward()
   tell('rewindforward')
 end
 
---- hs.vox.rewindBackward()
+--- hs.vox.backward()
 --- Function
---- Skips the playback position backwards by about 5 seconds
+--- Skips the playback position backwards by about 7 seconds
 ---
 --- Parameters:
 ---  * None
 ---
 --- Returns:
 ---  * None
-function vox.rewindForward()
+function vox.backward()
   tell('rewindbackward')
+end
+
+--- hs.vox.fastForward()
+--- Function
+--- Skips the playback position forwards by about 17 seconds
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.fastForward()
+  tell('rewindforwardfast')
+end
+
+--- hs.vox.fastBackward()
+--- Function
+--- Skips the playback position backwards by about 14 seconds
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.fastBackward()
+  tell('rewindbackwardfast')
+end
+
+--- hs.vox.increaseVolume()
+--- Function
+--- Increases the palyer volume
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.increaseVolume()
+  tell('increasvolume')
+end
+
+--- hs.vox.decreaseVolume()
+--- Function
+--- Decreases the player volume
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.decreaseVolume()
+  tell('decreasevolume')
 end
 
 --- hs.vox.trackInfo()
@@ -222,6 +320,7 @@ function vox.isRunning()
   return app.get("vox") ~= nil
 end
 
+--- TODO: Start Here
 --- hs.vox.getVolume()
 --- Function
 --- Gets the vox volume setting
@@ -247,28 +346,6 @@ function vox.setVolume(v)
   if not v then error('volume must be a number 1..100',2) end
   return tell('set sound volume to '..math.min(100,math.max(0,v)))
 end
-
---- hs.vox.volumeUp()
---- Function
---- Increases the volume by 5
----
---- Parameters:
----  * None
----
---- Returns:
----  * None
-function vox.volumeUp() return vox.setVolume(vox.getVolume()+5) end
-
---- hs.vox.volumeDown()
---- Function
---- Reduces the volume by 5
----
---- Parameters:
----  * None
----
---- Returns:
----  * None
-function vox.volumeDown() return vox.setVolume(vox.getVolume()-5) end
 
 --- hs.vox.getPosition()
 --- Function
