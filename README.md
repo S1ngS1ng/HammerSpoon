@@ -1,5 +1,5 @@
 # HammerSpoon
-** WIP: VOX Player **
+* WIP: VOX Player
 
 HammerSpoon config file
 =======
