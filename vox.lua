@@ -23,22 +23,6 @@ local function tell(cmd)
   end
 end
 
--- TODO: VERIFY
--- --- hs.vox.state_paused
--- --- Constant
--- --- Returned by `hs.vox.getPlaybackState()` to indicates vox is paused
--- vox.state_paused = "kPSp"
---
--- --- hs.vox.state_playing
--- --- Constant
--- --- Returned by `hs.vox.getPlaybackState()` to indicates vox is playing
--- vox.state_playing = "kPSP"
---
--- --- hs.vox.state_stopped
--- --- Constant
--- --- Returned by `hs.vox.getPlaybackState()` to indicates vox is stopped
--- vox.state_stopped = "kPSS"
-
 ------------------------------------------------
 ---              Basic Command               ---
 ------------------------------------------------
@@ -224,6 +208,22 @@ function vox.decreaseVolume()
   tell('decreasevolume')
 end
 
+--- hs.vox.togglePlaylist()
+--- Function
+--- Toggle playlist
+---
+--- Parameters:
+---  * None
+---
+--- Returns:
+---  * None
+function vox.togglePlaylist()
+  tell('showhideplaylist')
+end
+
+------------------------------------------------
+---                Song info                 ---
+------------------------------------------------
 --- hs.vox.trackInfo()
 --- Function
 --- Displays information for current track on screen
@@ -306,71 +306,15 @@ function vox.getPlayerState()
   return tell('playerState')
 end
 
---- TODO: VERIFY BELOW
 --- hs.vox.isRunning()
 --- Function
---- Returns whether vox is currently open. Most other functions in hs.vox will automatically start the application, so this function can be used to guard against that.
+--- Returns whether VOX is currently open
 ---
 --- Parameters:
 ---  * None
 ---
 --- Returns:
----  * A boolean value indicating whether the vox application is running.
+---  * A boolean value indicating whether the vox application is running
 function vox.isRunning()
-  return app.get("vox") ~= nil
+  return app.get("VOX"):isRunning() ~= nil
 end
-
---- TODO: Start Here
---- hs.vox.getVolume()
---- Function
---- Gets the vox volume setting
----
---- Paramters:
----  * None
----
---- Returns:
----  * A number containing the volume vox is set to between 1 and 100
-function vox.getVolume() return tell'sound volume' end
-
---- hs.vox.setVolume(vol)
---- Function
---- Sets the vox volume setting
----
---- Parameters:
----  * vol - A number between 1 and 100
----
---- Returns:
----  * None
-function vox.setVolume(v)
-  v=tonumber(v)
-  if not v then error('volume must be a number 1..100',2) end
-  return tell('set sound volume to '..math.min(100,math.max(0,v)))
-end
-
---- hs.vox.getPosition()
---- Function
---- Gets the playback position (in seconds) in the current song
----
---- Parameters:
----  * None
----
---- Returns:
----  * A number indicating the current position in the song
-function vox.getPosition() return tell'player position' end
-
---- hs.vox.setPosition(pos)
---- Function
---- Sets the playback position in the current song
----
---- Parameters:
----  * pos - A number containing the position (in seconds) to jump to in the current song
----
---- Returns:
----  * None
-function vox.setPosition(p)
-  p=tonumber(p)
-  if not p then error('position must be a number in seconds',2) end
-  return tell('set player position to '..p)
-end
-
-return vox
