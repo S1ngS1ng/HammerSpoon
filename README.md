@@ -1,5 +1,4 @@
 # HammerSpoon
-* WIP: VOX Player
 
 HammerSpoon config file
 =======
@@ -7,15 +6,15 @@ HammerSpoon config file
 > tl;dr [Click Me](#install)
 
 # Features
-**All keyboard shortcuts**
-> Based on grid system, easy to customize
-
-* Maximize window (not the full-screen mode)
-* Move window to another screen
-* Set window size **immediately** to half of the current screen toward **ANY** direction
-* Stretch or shrink window size toward **ANY** direction
-
-> Note that: I could add a `move window` feature to this, but I found it not useful to me.
+* [Window Management](./window-management.lua)
+    * Maximize window (not the full-screen mode)
+    * Move window to another screen
+    * Set window size **immediately** to half of the current screen toward **ANY** direction
+    * Stretch or shrink window size toward **ANY** direction
+* [VOX Music Player](./vox.lua)
+    * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
+    * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
+    * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
 
 # Example
 > In case you might get confused
@@ -71,3 +70,5 @@ HammerSpoon config file
 * I would recommend to disable animation. Especially for resize anchoring Bottom, Right
 * Feel free to open an issue or submit your Pull Request ^_^
 * Any suggestions, comments, thoughts are all welcome
+
+
