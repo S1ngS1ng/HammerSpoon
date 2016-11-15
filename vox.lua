@@ -1,4 +1,4 @@
---- === hs.vox ===
+--- === vox ===
 ---
 --- Controls for VOX music player
 
@@ -26,7 +26,7 @@ end
 ------------------------------------------------
 ---              Basic Command               ---
 ------------------------------------------------
---- hs.vox.pause()
+--- vox.pause()
 --- Function
 --- Pauses the current vox track
 ---
@@ -39,7 +39,7 @@ function vox.pause()
   tell('pause')
 end
 
---- hs.vox.play()
+--- vox.play()
 --- Function
 --- Plays the current vox track
 ---
@@ -52,7 +52,7 @@ function vox.play()
   tell('play')
 end
 
---- hs.vox.playpause()
+--- vox.playpause()
 --- Function
 --- Toggles play/pause of current vox track
 ---
@@ -65,7 +65,7 @@ function vox.playpause()
   tell('playpause')
 end
 
---- hs.vox.next()
+--- vox.next()
 --- Function
 --- Skips to the next vox track
 ---
@@ -78,7 +78,7 @@ function vox.next()
   tell('next track')
 end
 
---- hs.vox.previous()
+--- vox.previous()
 --- Function
 --- Skips to previous vox track
 ---
@@ -91,7 +91,7 @@ function vox.previous()
   tell('previous track')
 end
 
---- hs.vox.shuffle()
+--- vox.shuffle()
 --- Function
 --- Toggle shuffle state of current list
 ---
@@ -104,7 +104,7 @@ function vox.shuffle()
   tell('shuffle')
 end
 
---- hs.vox.playurl(url)
+--- vox.playurl(url)
 --- Function
 --- Play media from the given URL
 ---
@@ -117,7 +117,7 @@ function vox.playurl(url)
   tell('playurl \"' .. url .. '\"')
 end
 
---- hs.vox.addurl(url)
+--- vox.addurl(url)
 --- Function
 --- Add media URL to current list
 ---
@@ -130,7 +130,7 @@ function vox.addurl(url)
   tell('addurl \"' .. url .. '\"')
 end
 
---- hs.vox.forward()
+--- vox.forward()
 --- Function
 --- Skips the playback position forwards by about 7 seconds
 ---
@@ -143,7 +143,7 @@ function vox.forward()
   tell('rewindforward')
 end
 
---- hs.vox.backward()
+--- vox.backward()
 --- Function
 --- Skips the playback position backwards by about 7 seconds
 ---
@@ -156,7 +156,7 @@ function vox.backward()
   tell('rewindbackward')
 end
 
---- hs.vox.fastForward()
+--- vox.fastForward()
 --- Function
 --- Skips the playback position forwards by about 17 seconds
 ---
@@ -169,7 +169,7 @@ function vox.fastForward()
   tell('rewindforwardfast')
 end
 
---- hs.vox.fastBackward()
+--- vox.fastBackward()
 --- Function
 --- Skips the playback position backwards by about 14 seconds
 ---
@@ -182,7 +182,7 @@ function vox.fastBackward()
   tell('rewindbackwardfast')
 end
 
---- hs.vox.increaseVolume()
+--- vox.increaseVolume()
 --- Function
 --- Increases the palyer volume
 ---
@@ -195,7 +195,7 @@ function vox.increaseVolume()
   tell('increasvolume')
 end
 
---- hs.vox.decreaseVolume()
+--- vox.decreaseVolume()
 --- Function
 --- Decreases the player volume
 ---
@@ -208,7 +208,7 @@ function vox.decreaseVolume()
   tell('decreasevolume')
 end
 
---- hs.vox.togglePlaylist()
+--- vox.togglePlaylist()
 --- Function
 --- Toggle playlist
 ---
@@ -224,7 +224,7 @@ end
 ------------------------------------------------
 ---                Song info                 ---
 ------------------------------------------------
---- hs.vox.trackInfo()
+--- vox.trackInfo()
 --- Function
 --- Displays information for current track on screen
 ---
@@ -240,7 +240,7 @@ function vox.trackInfo()
   alert.show(track .."\n".. album .."\n".. artist, 1.75)
 end
 
---- hs.vox.getCurrentArtist()
+--- vox.getCurrentArtist()
 --- Function
 --- Gets the name of the artist of the current track
 ---
@@ -253,7 +253,7 @@ function vox.getCurrentArtist()
   return tell('artist') or "Unknown artist"
 end
 
---- hs.vox.getCurrentAlbum()
+--- vox.getCurrentAlbum()
 --- Function
 --- Gets the name of the album of the current track
 ---
@@ -266,7 +266,7 @@ function vox.getCurrentAlbum()
   return tell('album') or "Unknown album"
 end
 
---- hs.vox.getAlbumArtist()
+--- vox.getAlbumArtist()
 --- Function
 --- Gets the artist of current Album
 ---
@@ -279,7 +279,7 @@ function vox.getAlbumArtist()
   return tell('albumArtist') or "Unknown album artist"
 end
 
---- hs.vox.getUniqueID()
+--- vox.getUniqueID()
 --- Function
 --- Gets the uniqueID of the current track
 ---
@@ -292,7 +292,7 @@ function vox.getUniqueID()
   return tell('uniqueID') or "Unknown ID"
 end
 
---- hs.vox.getPlayerState()
+--- vox.getPlayerState()
 --- Function
 --- Gets the current playback state of vox
 ---
@@ -306,7 +306,7 @@ function vox.getPlayerState()
   return tell('playerState')
 end
 
---- hs.vox.isRunning()
+--- vox.isRunning()
 --- Function
 --- Returns whether VOX is currently open
 ---
@@ -318,3 +318,5 @@ end
 function vox.isRunning()
   return app.get("VOX"):isRunning() ~= nil
 end
+
+return vox
