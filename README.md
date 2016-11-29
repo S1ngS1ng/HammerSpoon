@@ -11,14 +11,12 @@ HammerSpoon config file
     * Move window to another screen
     * Set window size **immediately** to half of the current screen toward **ANY** direction
     * Stretch or shrink window size toward **ANY** direction
-* [VOX Music Player](./vox.lua)
+* VOX Music Player - Now in [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html)
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
 
 # Example
-> In case you might get confused
-
 * Centering and Maximize
 
 ![Imgur](http://i.imgur.com/okNaoJW.gif)
@@ -36,10 +34,9 @@ HammerSpoon config file
 ![Imgur](http://i.imgur.com/fiIfeXe.gif)
 
 # Install
-
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
-* Download, Copy or `git clone` [my config file](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua)
-* Put the `init.lua` in ~/.hammerspoon
+* Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua) and [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua)
+* Put `init.lua` **and** `window-management.lua` in ~/.hammerspoon
 
 # Shortcuts
 * Move window to another screen
@@ -66,9 +63,6 @@ HammerSpoon config file
 	* `Alt-Command-Shift + Down`	Move Top edge Down
 
 # Tips
-
 * I would recommend to disable animation. Especially for resize anchoring Bottom, Right
 * Feel free to open an issue or submit your Pull Request ^_^
 * Any suggestions, comments, thoughts are all welcome
-
-
