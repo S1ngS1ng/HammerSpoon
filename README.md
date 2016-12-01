@@ -17,6 +17,7 @@ HammerSpoon config file
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
 
 # Example
+## Window Management
 * Centering and Maximize
 
 ![Imgur](http://i.imgur.com/okNaoJW.gif)
@@ -33,12 +34,17 @@ HammerSpoon config file
 
 ![Imgur](http://i.imgur.com/fiIfeXe.gif)
 
+## VOX
+* Show track info (Track Title, Album, Artist)
+![TrackInfo](./assets/vox-track-info.jpg)
+
 # Install
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
 * Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua) and [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua)
 * Put `init.lua` **and** `window-management.lua` in ~/.hammerspoon
 
 # Shortcuts
+## Window Management
 * Move window to another screen
 	* `Ctrl-Alt + Left`	Set current window to the Left screen
 	* `Ctrl-Alt + Right`	Set current window to the Right screen
@@ -61,6 +67,11 @@ HammerSpoon config file
 	* `Alt-Command-Shift + Right`	Move Left edge to the Right
 	* `Alt-Command-Shift + Up`		Move Top edge Up
 	* `Alt-Command-Shift + Down`	Move Top edge Down
+## VOX
+* `Alt-Command-Shift + J` Toggle Play and Pause
+* `Alt-Command-Shift + H` Previous song
+* `Alt-Command-Shift + L` Next song
+* `Alt-Command-Shift + K` Display track information
 
 # Tips
 * I would recommend to disable animation. Especially for resize anchoring Bottom, Right

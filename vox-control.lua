@@ -4,18 +4,21 @@ hk = require "hs.hotkey"
 -- Hyper key for VOX control
 local voxHyper = {"cmd", "alt", "shift"}
 
---- voxBind()
---- Function
---- Bind hotkey for VOX control
----
---- Parameters:
----  * key {string} hotkey
----  * fn {function} callback function
----  * hyper(optional) {table} hyper key, use voxHyper by default
-local function voxBind(key, fn, hyper)
-  hk.bind(hyper or voxHyper, key, function() fn() end)
+--- Bind hotkey for VOX control.
+-- @function voxBindTable
+-- @param { ...{key=value} } keyFuncTable - multiple hotkey and function pairs
+--   @key {string} hotkey
+--   @value {function} callback function
+-- @param {table} [hyper] - optional hyper key set, use local value voxHyper by default
+local function voxBindTable(keyFuncTable, hyper)
+  for key,fn in pairs(keyFuncTable) do
+    hk.bind(hyper or voxHyper, key, function() fn() end)
+  end
 end
 
-voxBind("j", hv.playpause)
-voxBind("h", hv.previous)
-voxBind("l", hv.next)
+voxBindTable({
+  j = hv.playpause,
+  h = hv.previous,
+  l = hv.next,
+  k = hv.trackInfo
+})
