@@ -9,12 +9,17 @@ HammerSpoon config file - by S1ngS1ng
     * Move window to another screen
     * Set window size **immediately** to half of the current screen toward **ANY** direction
     * Stretch or shrink window size toward **ANY** direction
-* [VOX Music Player](./vox-control.lua) - Now merged as [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html)
+* **NEW Feature** [VOX Music Player](./vox-control.lua) - Now merged as [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html)
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
 
 # Example
+## VOX
+* Show track info (Track Title, Album, Artist)
+
+![TrackInfo](./assets/vox-track-info.jpg)
+
 ## Window Management
 * Centering and Maximize
 
@@ -31,11 +36,6 @@ HammerSpoon config file - by S1ngS1ng
 * Resize (anchor bottom, right)
 
 ![Imgur](http://i.imgur.com/fiIfeXe.gif)
-
-## VOX
-* Show track info (Track Title, Album, Artist)
-
-![TrackInfo](./assets/vox-track-info.jpg)
 
 # Install
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
