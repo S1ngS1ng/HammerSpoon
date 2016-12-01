@@ -1,6 +1,4 @@
-# HammerSpoon
-
-HammerSpoon config file
+HammerSpoon config file - by S1ngS1ng
 =======
 
 > tl;dr [Click Me](#install)
@@ -11,7 +9,7 @@ HammerSpoon config file
     * Move window to another screen
     * Set window size **immediately** to half of the current screen toward **ANY** direction
     * Stretch or shrink window size toward **ANY** direction
-* VOX Music Player - Now in [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html)
+* [VOX Music Player](./vox-control.lua) - Now merged as [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html)
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
@@ -36,12 +34,13 @@ HammerSpoon config file
 
 ## VOX
 * Show track info (Track Title, Album, Artist)
+
 ![TrackInfo](./assets/vox-track-info.jpg)
 
 # Install
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
-* Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua) and [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua)
-* Put `init.lua` **and** `window-management.lua` in ~/.hammerspoon
+* Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua), [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) and [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) 
+* Put `init.lua`, `window-management.lua` and `vox.control.lua` in ~/.hammerspoon
 
 # Shortcuts
 ## Window Management
