@@ -186,24 +186,44 @@ end
 -- -----------------------------------------------------------------------
 --                           ** Key Binding **                          --
 -- -----------------------------------------------------------------------
-key = require "hs.hotkey"
+hk = require "hs.hotkey"
+------------------------- * Key Binding Utility * ------------------------
+--- Bind hotkey for window management.
+-- @function windowBind
+-- @param {table} hyper - hyper key set
+-- @param { ...{key=value} } keyFuncTable - multiple hotkey and function pairs
+--   @key {string} hotkey
+--   @value {function} callback function
+local function windowBind(hyper, keyFuncTable)
+  for key,fn in pairs(keyFuncTable) do
+    hk.bind(hyper, key, fn)
+  end
+end
 ------------------------ * Move window to screen * -----------------------
-hs.hotkey.bind({"ctrl", "alt"}, "left", throwLeft)
-hs.hotkey.bind({"ctrl", "alt"}, "right", throwRight)
+windowBind({"ctrl", "alt"}, {
+  left = throwLeft,
+  right = throwRight
+})
 -------------------- * Set Window Position on screen* --------------------
-hs.hotkey.bind({"ctrl", "alt", "cmd" }, "m", maximizeWindow)    -- ⌃⌥⌘ + M
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "c", centerOnScreen)     -- ⌃⌥⌘ + C
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "left", leftHalf)        -- ⌃⌥⌘ + ←
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "right", rightHalf)      -- ⌃⌥⌘ + →
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "up", topHalf)           -- ⌃⌥⌘ + ↑
-hs.hotkey.bind({"ctrl", "alt", "cmd"}, "down", bottomHalf)      -- ⌃⌥⌘ + ↓
+windowBind({"ctrl", "alt", "cmd"}, {
+  m = maximizeWindow,    -- ⌃⌥⌘ + M
+  c = centerOnScreen,    -- ⌃⌥⌘ + C
+  left = leftHalf,       -- ⌃⌥⌘ + ←
+  right = rightHalf,     -- ⌃⌥⌘ + →
+  up = topHalf,          -- ⌃⌥⌘ + ↑
+  down = bottomHalf      -- ⌃⌥⌘ + ↓
+})
 -------------------- * Set Window Position on screen* --------------------
-hs.hotkey.bind({"ctrl", "alt", "shift"}, "left", rightToLeft)   -- ⌃⌥⇧ + ←
-hs.hotkey.bind({"ctrl", "alt", "shift"}, "right", rightToRight) -- ⌃⌥⇧ + →
-hs.hotkey.bind({"ctrl", "alt", "shift"}, "up", bottomUp)        -- ⌃⌥⇧ + ↑
-hs.hotkey.bind({"ctrl", "alt", "shift"}, "down", bottomDown)    -- ⌃⌥⇧ + ↓
+windowBind({"ctrl", "alt", "shift"}, {
+  left = rightToLeft,      -- ⌃⌥⇧ + ←
+  right = rightToRight,    -- ⌃⌥⇧ + →
+  up = bottomUp,           -- ⌃⌥⇧ + ↑
+  down = bottomDown        -- ⌃⌥⇧ + ↓
+})
 -------------------- * Set Window Position on screen* --------------------
-hs.hotkey.bind({"alt", "cmd", "shift"}, "left", leftToLeft)     -- ⌥⌘⇧ + ←
-hs.hotkey.bind({"alt", "cmd", "shift"}, "right", leftToRight)   -- ⌥⌘⇧ + →
-hs.hotkey.bind({"alt", "cmd", "shift"}, "up", topUp)            -- ⌥⌘⇧ + ↑
-hs.hotkey.bind({"alt", "cmd", "shift"}, "down", topDown)        -- ⌥⌘⇧ + ↓
+windowBind({"alt", "cmd", "shift"}, {
+  left = leftToLeft,      -- ⌥⌘⇧ + ←
+  right = leftToRight,    -- ⌥⌘⇧ + →
+  up = topUp,             -- ⌥⌘⇧ + ↑
+  down = topDown          -- ⌥⌘⇧ + ↓
+})
