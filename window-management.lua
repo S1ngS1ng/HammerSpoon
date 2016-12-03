@@ -15,7 +15,7 @@ screenwatcher:start()
 
 -- Set screen grid depending on resolution
   -- TODO: set grid according to pixels
-for index,screen in pairs(hs.screen.allScreens()) do
+for _index,screen in pairs(hs.screen.allScreens()) do
   if screen:frame().w / screen:frame().h > 2 then
     -- 10 * 4 for ultra wide screen
     grid.setGrid('10 * 4', screen)
