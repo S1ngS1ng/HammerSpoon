@@ -187,7 +187,7 @@ end
 --                           ** Key Binding **                          --
 -- -----------------------------------------------------------------------
 hk = require "hs.hotkey"
-------------------------- * Key Binding Utility * ------------------------
+-- * Key Binding Utility
 --- Bind hotkey for window management.
 -- @function windowBind
 -- @param {table} hyper - hyper key set
@@ -199,12 +199,13 @@ local function windowBind(hyper, keyFuncTable)
     hk.bind(hyper, key, fn)
   end
 end
------------------------- * Move window to screen * -----------------------
+
+-- * Move window to screen
 windowBind({"ctrl", "alt"}, {
   left = throwLeft,
   right = throwRight
 })
--------------------- * Set Window Position on screen* --------------------
+-- * Set Window Position on screen
 windowBind({"ctrl", "alt", "cmd"}, {
   m = maximizeWindow,    -- ⌃⌥⌘ + M
   c = centerOnScreen,    -- ⌃⌥⌘ + C
@@ -213,14 +214,14 @@ windowBind({"ctrl", "alt", "cmd"}, {
   up = topHalf,          -- ⌃⌥⌘ + ↑
   down = bottomHalf      -- ⌃⌥⌘ + ↓
 })
--------------------- * Set Window Position on screen* --------------------
+-- * Set Window Position on screen
 windowBind({"ctrl", "alt", "shift"}, {
   left = rightToLeft,      -- ⌃⌥⇧ + ←
   right = rightToRight,    -- ⌃⌥⇧ + →
   up = bottomUp,           -- ⌃⌥⇧ + ↑
   down = bottomDown        -- ⌃⌥⇧ + ↓
 })
--------------------- * Set Window Position on screen* --------------------
+-- * Set Window Position on screen
 windowBind({"alt", "cmd", "shift"}, {
   left = leftToLeft,      -- ⌥⌘⇧ + ←
   right = leftToRight,    -- ⌥⌘⇧ + →
