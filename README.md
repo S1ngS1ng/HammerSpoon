@@ -13,6 +13,12 @@ HammerSpoon config file - by S1ngS1ng
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
+* **NOT DONE, yet!** [Global VIM-like Key Binding]
+    * `Ctrl + h` Left
+    * `Ctrl + j` Down
+    * `Ctrl + k` Up
+    * `Ctrl + l` Right
+    * should work with other modifiers such as `alt`, `shift`, `cmd`
 
 # Example
 ## VOX
