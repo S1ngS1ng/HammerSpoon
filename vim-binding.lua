@@ -30,23 +30,49 @@ key_table = {
 
 last_mods = {}
 
+execute = function (mods, flag)
+  local keyListener = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function (event)
+    print('here')
+    local keyArr = { 'h', 'j', 'k', 'l' }
+    local keyPressed = event:getCharacters()
+    print('keyPressed: '..keyPressed)
+    if hs.fnutils.contains(keyArr, keyPressed) then
+      print('tereh')
+      hs.eventtap.event.newKeyEvent({}, vimBinding[keyPressed], true):post()
+      hs.eventtap.event.newKeyEvent({}, vimBinding[keyPressed], false):post()
+    else
+      return false
+    end
+  end)
+  if flag then
+    keyListener:start()
+  else
+    keyListener:stop()
+  end
+  print('inside execute')
+end
+
+
 modifierHandler = function(event)
   local new_mods = event:getFlags()
-  print(last_mods['ctrl'], new_mods['ctrl'])
   if last_mods['ctrl'] == new_mods['ctrl'] then
+    print('Inside equal')
     return false
   end
   if not last_mods['ctrl'] then
     last_mods = new_mods
+    execute(new_mods, true)
+    print('repeated!!!!')
     -- TODO: Get pressed KEY HERE!!
   else
     if key_table['key'] then
       print('executing')
-      hs.eventtap.event.newKeyEvent({}, 'left', true):post()
-      hs.eventtap.event.newKeyEvent({}, 'left', false):post()
+--      hs.eventtap.event.newKeyEvent({}, 'left', true):post()
+--      hs.eventtap.event.newKeyEvent({}, 'left', false):post()
       print('executed')
     end
     last_mods = new_mods
+    return false
   end
   return false
 end
