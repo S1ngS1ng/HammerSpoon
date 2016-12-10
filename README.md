@@ -1,7 +1,7 @@
 HammerSpoon config file - by S1ngS1ng
 =======
 
-[![English](https://jaywcjlove.github.io/sb/lang/english.svg)](./README.md) [![Chinese](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-cn.md)
+[![English](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/S1ngS1ng/HammerSpoon) [![Chinese](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-cn.md)
 
 > tl;dr [Click Me](#install)
 
