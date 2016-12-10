@@ -1,7 +1,7 @@
 HammerSpoon config file - by S1ngS1ng
 =======
 
-[![English](https://jaywcjlove.github.io/sb/lang/english.svg)](./README.md)[![Chinese](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-cn.md)
+[![English](https://jaywcjlove.github.io/sb/lang/english.svg)](./README.md) [![Chinese](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-cn.md)
 
 > 太长不看：[点我安装](#安装)
 
