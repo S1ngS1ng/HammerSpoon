@@ -1,6 +1,8 @@
 HammerSpoon config file - by S1ngS1ng
 =======
 
+[![English](https://jaywcjlove.github.io/sb/lang/english.svg)](./README.md)[![Chinese](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-cn.md)
+
 > tl;dr [Click Me](#install)
 
 # Features
@@ -72,6 +74,7 @@ HammerSpoon config file - by S1ngS1ng
 	* `Alt-Command-Shift + Right`	Move Left edge to the Right
 	* `Alt-Command-Shift + Up`		Move Top edge Up
 	* `Alt-Command-Shift + Down`	Move Top edge Down
+
 ## VOX
 * `Alt-Command-Shift + J` Toggle Play and Pause
 * `Alt-Command-Shift + H` Previous song
@@ -82,3 +85,5 @@ HammerSpoon config file - by S1ngS1ng
 * I would recommend to disable animation. Especially for resize anchoring Bottom, Right
 * Feel free to open an issue or submit your Pull Request ^_^
 * Any suggestions, comments, thoughts are all welcome
+
+
