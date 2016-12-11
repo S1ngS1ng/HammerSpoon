@@ -1,103 +1,71 @@
---local function keyCode(key, modifiers)
---  modifiers = modifiers or {}
---
---  return function()
---    hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
---    hs.timer.usleep(1000)
---    hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
---  end
---end
+-- https://github.com/asmagill/hammerspoon-config/blob/master/_scratch/viKeys.lua
 
-local vimBinding = {
-  h = 'left',
-  j = 'down',
-  k = 'up',
-  l = 'right'
-}
+local module = {}
 
-function getTable(modKeys)
-  local modTable = {}
-  for flag in pairs(modKeys) do
-    table.insert(modTable, flag)
+module.debugging = false -- whether to print status updates
+
+local eventtap = require "hs.eventtap"
+local event    = eventtap.event
+local inspect  = require "hs.inspect"
+
+local keyHandler = function(e)
+  local watchFor = { h = "left", j = "down", k = "up", l = "right" }
+  local actualKey = e:getCharacters(true)
+  local replacement = watchFor[actualKey:lower()]
+  if replacement then
+    local isDown = e:getType() == event.types.keyDown
+    local flags  = {}
+    for k, v in pairs(e:getFlags()) do
+      if v and k ~= "ctrl" then -- ctrl will be down because that's our "wrapper", so ignore it
+        table.insert(flags, k)
+      end
+    end
+    if module.debugging then print("viKeys: " .. replacement, inspect(flags), isDown) end
+    local replacementEvent = event.newKeyEvent(flags, replacement, isDown)
+    if isDown then
+      -- allow for auto-repeat
+      replacementEvent:setProperty(event.properties.keyboardEventAutorepeat, e:getProperty(event.properties.keyboardEventAutorepeat))
+    end
+    return true, { replacementEvent }
+  else
+    return false -- do nothing to the event, just pass it along
   end
-  return modTable
 end
 
-key_table = {
-  last_mods = {},
-  key = false
-}
-
-last_mods = {}
-
-execute = function (mods, flag)
-  local keyListener = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function (event)
-    print('here')
-    local keyArr = { 'h', 'j', 'k', 'l' }
-    local keyPressed = event:getCharacters()
-    print('keyPressed: '..keyPressed)
-    if hs.fnutils.contains(keyArr, keyPressed) then
-      print('tereh')
-      hs.eventtap.event.newKeyEvent({}, vimBinding[keyPressed], true):post()
-      hs.eventtap.event.newKeyEvent({}, vimBinding[keyPressed], false):post()
-    else
-      return false
-    end
-  end)
-  if flag then
-    keyListener:start()
-  else
-    keyListener:stop()
+local modifierHandler = function(e)
+  local flags = e:getFlags()
+  local onlyControlPressed = false
+  for k, v in pairs(flags) do
+    onlyControlPressed = v and k == "ctrl"
+    if not onlyControlPressed then break end
   end
-  print('inside execute')
-end
-
-
-modifierHandler = function(event)
-  local new_mods = event:getFlags()
-  if last_mods['ctrl'] == new_mods['ctrl'] then
-    print('Inside equal')
-    return false
-  end
-  if not last_mods['ctrl'] then
-    last_mods = new_mods
-    execute(new_mods, true)
-    print('repeated!!!!')
-    -- TODO: Get pressed KEY HERE!!
-  else
-    if key_table['key'] then
-      print('executing')
---      hs.eventtap.event.newKeyEvent({}, 'left', true):post()
---      hs.eventtap.event.newKeyEvent({}, 'left', false):post()
-      print('executed')
-    end
-    last_mods = new_mods
-    return false
+  -- you must tap and hold ctrl by itself to turn this on
+  if onlyControlPressed and not module.keyListener then
+    if module.debugging then print("viKeys: keyhandler on") end
+    module.keyListener = eventtap.new({ event.types.keyDown, event.types.keyUp }, keyHandler):start()
+    -- however, adding additional modifiers afterwards is ok... its only when ctrl isn't down that we switch back off
+  elseif not flags.ctrl and module.keyListener then
+    if module.debugging then print("viKeys: keyhandler off") end
+    module.keyListener:stop()
+    module.keyListener = nil
   end
   return false
 end
 
-local modifierListener = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, modifierHandler)
-modifierListener:start()
+module.modifierListener = eventtap.new({ event.types.flagsChanged }, modifierHandler)
 
---  local modFlags = event:getFlags()
---  hs.inspect(modFlags)
---  if modFlags['ctrl'] then
---    local modTable = hs.fnutils.filter(getTable(modFlags), function (e) return e ~= 'ctrl' end)
---    print(hs.inspect(modTable))
---    keyTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
---      local keyDown = hs.keycodes.map[event:getKeyCode()]
---      if keyDown == 'h' or keyDown == 'j' or keyDown == 'k' or keyDown == 'l' then
---        print(hs.inspect(modTable), vimBinding[keyDown])
-----        hs.eventtap.keyStroke(modTable, keyDown)
---      else
---        return false
---      end
---    end)
---    print('start')
---    keyTap:start()
---    print('after')
---  else
---    return false
---  end
--- end
+module.start = function()
+  module.modifierListener:start()
+end
+
+module.stop = function()
+  if module.keyListener then
+    module.keyListener:stop()
+    module.keyListener = nil
+  end
+  module.modifierListener:stop()
+end
+
+module.start() -- autostart
+
+return module
