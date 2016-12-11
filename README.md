@@ -20,6 +20,9 @@ HammerSpoon config file - by S1ngS1ng
     * Works with combinations of `Alt`, `Cmd` and `Shift`
 
 # Example
+## VIM Key Binding
+![vim-key-binding](./assets/vim-key-binding.gif)
+
 ## VOX
 * Show track info (Track Title, Album, Artist)
 
