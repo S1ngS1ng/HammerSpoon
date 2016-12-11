@@ -15,12 +15,9 @@ HammerSpoon config file - by S1ngS1ng
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
-* **NOT DONE, yet!** [Global VIM-like Key Binding]
-    * `Ctrl + h` Left
-    * `Ctrl + j` Down
-    * `Ctrl + k` Up
-    * `Ctrl + l` Right
-    * should work with other modifiers such as `alt`, `shift`, `cmd`
+* **NEW Feature** [Global VIM-like Key Binding] (Thanks [@A-RON](https://github.com/asmagill))
+    * `Ctrl` + `hjkl` for `Left, Down, Up and Right`
+    * Works with combinations of `Alt`, `Cmd` and `Shift`
 
 # Example
 ## VOX
@@ -74,12 +71,25 @@ HammerSpoon config file - by S1ngS1ng
 	* `Alt-Command-Shift + Right`	Move Left edge to the Right
 	* `Alt-Command-Shift + Up`		Move Top edge Up
 	* `Alt-Command-Shift + Down`	Move Top edge Down
-
 ## VOX
 * `Alt-Command-Shift + J` Toggle Play and Pause
 * `Alt-Command-Shift + H` Previous song
 * `Alt-Command-Shift + L` Next song
 * `Alt-Command-Shift + K` Display track information
+## VIM-like key binding (I already map `Ctrl` to `CapsLock`)
+* Basic
+    * `Ctrl + h` Left
+    * `Ctrl + j` Down
+    * `Ctrl + k` Up
+    * `Ctrl + l` Right
+* Use with `Alt`
+    * `Ctrl-Alt + H` Move caret Left by 1 word
+    * `Ctrl-Alt + L` Move caret Right by 1 word
+* Use with `Cmd`
+    * `Ctrl-Cmd + H` Move caret to the start of line
+    * `Ctrl-Cmd + L` Move caret to the end of line
+* Use with `Shift`
+    * For all the listed above, hold `Shift` at the same time will do selection
 
 # Tips
 * I would recommend to disable animation. Especially for resize anchoring Bottom, Right
