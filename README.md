@@ -15,13 +15,13 @@ HammerSpoon config file - by S1ngS1ng
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
     * Retrieve song information such as `song title`, `artist`, `album`, `playerState` and so on
-* **NEW Feature** [Global VIM-like Key Binding] (Thanks [@A-RON](https://github.com/asmagill))
+* **NEW Feature** [Global VIM-like Key Binding](./vim-binding.lua) (Thanks to [@A-RON](https://github.com/asmagill))
     * `Ctrl` + `hjkl` for `Left, Down, Up and Right`
     * Works with combinations of `Alt`, `Cmd` and `Shift`
 
 # Example
 ## VIM Key Binding
-![vim-key-binding](./assets/vim-key-binding.gif)
+![vim-key-binding](./assets/vim-key-binding(block-caret).gif)
 
 ## VOX
 * Show track info (Track Title, Album, Artist)
