@@ -48,6 +48,7 @@ HammerSpoon config file - by S1ngS1ng
 * Put `init.lua`, `window-management.lua` and `vox.control.lua` in ~/.hammerspoon
 
 # Shortcuts
+
 ## Window Management
 * Move window to another screen
 	* `Ctrl-Alt + Left`	Set current window to the Left screen
@@ -71,11 +72,13 @@ HammerSpoon config file - by S1ngS1ng
 	* `Alt-Command-Shift + Right`	Move Left edge to the Right
 	* `Alt-Command-Shift + Up`		Move Top edge Up
 	* `Alt-Command-Shift + Down`	Move Top edge Down
+
 ## VOX
 * `Alt-Command-Shift + J` Toggle Play and Pause
 * `Alt-Command-Shift + H` Previous song
 * `Alt-Command-Shift + L` Next song
 * `Alt-Command-Shift + K` Display track information
+
 ## VIM-like key binding (I already map `Ctrl` to `CapsLock`)
 * Basic
     * `Ctrl + h` Left
