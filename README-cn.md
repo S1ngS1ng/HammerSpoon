@@ -15,14 +15,15 @@ HammerSpoon config file - by S1ngS1ng
     * 播放、暂停、下一首、上一首、快进、快退、调整音量等基本操作
     * 添加 URL 到 VOX, 播放 URL 以及显示/隐藏播放列表等高级功能
     * 获取当前播放曲目信息，提供歌名、歌手、专辑、播放状态等信息
-* **正在开发** [全局类 Vim 快捷键绑定]
-    * `Ctrl + h` 左（光标向左，下同）
-    * `Ctrl + j` 下
-    * `Ctrl + k` 上
-    * `Ctrl + l` 右
+* **新功能** 全局类 Vim 快捷键绑定 (感谢 [@A-RON](https://github.com/asmagill) 的帮助)
+    * `Ctrl + hjkl` 光标的上下左右
     * 可以与 `alt`, `shift`, `cmd` 搭配使用，实现按词移动、移到行首行尾以及选中
 
 # 示例
+## 全局类 Vim 快捷键绑定
+
+![vim-key-binding](./assets/vim-key-binding(block-caret).gif)
+
 ## VOX
 * 显示当前曲目信息 (分别为歌名，专辑名以及歌手名)
 
@@ -51,7 +52,8 @@ HammerSpoon config file - by S1ngS1ng
     * [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua) - 主程序入口
     * [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) - 窗口管理
     * [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) - VOX 播放器控制
-* 将 `init.lua`, `window-management.lua` 和 `vox.control.lua` 放到 `~/.hammerspoon` 路径下
+    * [vim-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vim-binding.lua) - 类 Vim 快捷键绑定
+* 将 `init.lua`, `window-management.lua`, `vox.control.lua` 和 `vim-binding.lua` 放到 `~/.hammerspoon` 路径下
 
 # 快捷键
 ## 窗口管理
@@ -83,6 +85,22 @@ HammerSpoon config file - by S1ngS1ng
 * `Alt-Command-Shift + H` 上一首
 * `Alt-Command-Shift + L` 下一首
 * `Alt-Command-Shift + K` 显示当前歌曲信息
+* `Alt-Command-Shift + I` 显示/隐藏播放列表
+
+## 类 Vim 全局快捷键绑定 (我已经把 `CapsLock` 替换为 `Ctrl`)
+* 基本操作
+    * `Ctrl + h` 左
+    * `Ctrl + j` 下
+    * `Ctrl + k` 上
+    * `Ctrl + l` 右
+* 与 `Alt` 配合使用
+    * `Ctrl-Alt + H` 光标向左移动一个词
+    * `Ctrl-Alt + L` 光标向右移动一个词
+* 与 `Cmd` 配合使用
+    * `Ctrl-Cmd + H` 光标移至行首
+    * `Ctrl-Cmd + L` 光标移至行尾
+* 与 `Shift` 配合使用
+    * 上面所列出的操作，配合 `Shift` 可以实现选中功能
 
 # 写在最后
 * 个人建议，在 `init.lua` 中将动画效果取消（设为 0）

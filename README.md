@@ -47,8 +47,8 @@ HammerSpoon config file - by S1ngS1ng
 
 # Install
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
-* Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua), [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) and [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) 
-* Put `init.lua`, `window-management.lua` and `vox.control.lua` in ~/.hammerspoon
+* Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua), [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua), [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) and [vim-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vim-binding.lua)
+* Put `init.lua`, `window-management.lua`, `vox.control.lua` and `vim-binding.lua` in ~/.hammerspoon
 
 # Shortcuts
 
