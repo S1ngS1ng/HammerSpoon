@@ -20,5 +20,6 @@ voxBindTable({
   j = hv.playpause,
   h = hv.previous,
   l = hv.next,
-  k = hv.trackInfo
+  k = hv.trackInfo,
+  i = hv.togglePlaylist
 })
