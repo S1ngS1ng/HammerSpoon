@@ -81,6 +81,7 @@ HammerSpoon config file - by S1ngS1ng
 * `Alt-Command-Shift + H` Previous song
 * `Alt-Command-Shift + L` Next song
 * `Alt-Command-Shift + K` Display track information
+* `Alt-Command-Shift + I` Toggle Playlist
 
 ## VIM-like key binding (I already map `Ctrl` to `CapsLock`)
 * Basic
