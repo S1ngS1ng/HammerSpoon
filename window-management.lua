@@ -1,7 +1,7 @@
 -- -----------------------------------------------------------------------
 --                         ** Something Global **                       --
 -- -----------------------------------------------------------------------
-  -- Uncomment this following line if you don't wish to see animations
+  -- Comment out this following line if you wish to see animations
 hs.window.animationDuration = 0
 grid = require "hs.grid"
 grid.setMargins('0, 0')
@@ -228,3 +228,4 @@ windowBind({"alt", "cmd", "shift"}, {
   up = topUp,             -- ⌥⌘⇧ + ↑
   down = topDown          -- ⌥⌘⇧ + ↓
 })
+
