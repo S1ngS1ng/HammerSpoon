@@ -8,10 +8,28 @@ grid.setMargins('0, 0')
 
 -- Set screen watcher, in case you connect a new monitor, or unplug a monitor
 screens = {}
+screenArr = {}
 local screenwatcher = hs.screen.watcher.new(function()
   screens = hs.screen.allScreens()
 end)
 screenwatcher:start()
+
+-- Construct list of screens
+indexDiff = 0
+for index=1,#hs.screen.allScreens() do
+  local xIndex,yIndex = hs.screen.allScreens()[index]:position()
+  screenArr[xIndex] = hs.screen.allScreens()[index]
+end
+
+-- Find lowest screen index, save to indexDiff if negative
+hs.fnutils.each(screenArr, function(e)
+  local currentIndex = hs.fnutils.indexOf(screenArr, e)
+  if currentIndex < 0 and currentIndex < indexDiff then
+    indexDiff = currentIndex
+  end
+end)
+-- TODO: remove this
+print('indexDiff'..indexDiff)
 
 -- Set screen grid depending on resolution
   -- TODO: set grid according to pixels
@@ -90,6 +108,20 @@ local function rightHalf()
   local cell = Cell(0.5 * this.screenGrid.w, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
+
+local function cycleLeft()
+  local this = current:new()
+  -- Check if this window is on left or right
+  if this.windowGrid.x == 0 then
+    local currentIndex = hs.fnutils.indexOf(screenArr, current.scr) - indexDiff
+    local previousScreen = screenArr[(currentIndex + indexDiff) % 4 - 1]
+    print(hs.fnutils.indexOf(screenArr, current.scr) - indexDiff)
+    print(previousScreen)
+  else 
+    leftHalf()
+  end
+end
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "b", cycleLeft)
 
 local function topHalf()
   local this = current:new()
