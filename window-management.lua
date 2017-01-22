@@ -28,8 +28,6 @@ hs.fnutils.each(screenArr, function(e)
     indexDiff = currentIndex
   end
 end)
--- TODO: remove this
-print('indexDiff'..indexDiff)
 
 -- Set screen grid depending on resolution
   -- TODO: set grid according to pixels
@@ -109,19 +107,33 @@ local function rightHalf()
   grid.set(this.window, cell, this.screen)
 end
 
+-- Windows-like cycle left
 local function cycleLeft()
   local this = current:new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
-    local currentIndex = hs.fnutils.indexOf(screenArr, current.scr) - indexDiff
-    local previousScreen = screenArr[(currentIndex + indexDiff) % 4 - 1]
-    print(hs.fnutils.indexOf(screenArr, current.scr) - indexDiff)
-    print(previousScreen)
+    local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
+    local previousScreen = screenArr[(currentIndex - indexDiff - 1) % 4 + indexDiff]
+    this.window:moveToScreen(previousScreen)
+    rightHalf()
   else 
     leftHalf()
   end
 end
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "b", cycleLeft)
+
+-- Windows-like cycle right
+local function cycleRight()
+  local this = current:new()
+  -- Check if this window is on left or right
+  if this.windowGrid.x == 0 then
+    rightHalf()
+  else
+    local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
+    local nextScreen = screenArr[(currentIndex - indexDiff + 1) % 4 + indexDiff]
+    this.window:moveToScreen(nextScreen)
+    leftHalf()
+  end
+end
 
 local function topHalf()
   local this = current:new()
@@ -259,5 +271,11 @@ windowBind({"alt", "cmd", "shift"}, {
   right = leftToRight,    -- ⌥⌘⇧ + →
   up = topUp,             -- ⌥⌘⇧ + ↑
   down = topDown          -- ⌥⌘⇧ + ↓
+})
+
+-- * Windows-like cycle
+windowBind({"ctrl", "alt", "cmd"}, {
+  u = cycleLeft,          -- ⌃⌥⌘ + u
+  i = cycleRight          -- ⌃⌥⌘ + i
 })
 
