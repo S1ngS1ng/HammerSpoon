@@ -110,5 +110,3 @@ HammerSpoon config file - by S1ngS1ng
 * 个人建议，在 `init.lua` 中将动画效果取消（设为 0）
 * 如果你在使用中发现任何问题、欢迎提交 Issue 或者 PR，我会尽快处理
 * 如果你有任何想法、意见或者建议，欢迎联系我
-
-

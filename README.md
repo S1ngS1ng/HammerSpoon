@@ -106,5 +106,3 @@ HammerSpoon config file - by S1ngS1ng
 * I would recommend to disable animation. Especially for resize anchoring Bottom, Right
 * Feel free to open an issue or submit your Pull Request ^_^
 * Any suggestions, comments, thoughts are all welcome
-
-

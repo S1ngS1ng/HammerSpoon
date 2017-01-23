@@ -278,4 +278,3 @@ windowBind({"ctrl", "alt", "cmd"}, {
   u = cycleLeft,          -- ⌃⌥⌘ + u
   i = cycleRight          -- ⌃⌥⌘ + i
 })
-
