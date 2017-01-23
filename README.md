@@ -11,6 +11,7 @@ HammerSpoon config file - by S1ngS1ng
     * Move window to another screen
     * Set window size **immediately** to half of the current screen toward **ANY** direction
     * Stretch or shrink window size toward **ANY** direction
+    * **NEW Feature** Windows-like "relative" window cycle, just like `winKey + left/right` on Windows OS
 * **NEW Feature** [VOX Music Player](./vox-control.lua) - Now merged as [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html)
     * Basic commands such as `play`, `pause`, `next`, `forward`, `fastForward`, `increaseVolume` and so on
     * Advanced commands such as `addurl`, `playurl` and `togglePlaylist`
@@ -61,10 +62,10 @@ HammerSpoon config file - by S1ngS1ng
 * Set window to center (keep window height)
 	* `Ctrl-Alt-Command + C`
 * Set window size to **EXACTLY** half of the current screen
-	* `Ctrl-Alt-Command + Left`	Half the width, stick to Left
+	* `Ctrl-Alt-Command + Left`	    Half the width, stick to Left
 	* `Ctrl-Alt-Command + Right`	Half the width, stick to Right
 	* `Ctrl-Alt-Command + Up`		Half the width, stick to Top
-	* `Ctrl-Alt-Command + Down`	Half the width, stick to Bottom
+	* `Ctrl-Alt-Command + Down`	    Half the width, stick to Bottom
 * Adjust window size (anchor top, left)
 	* `Ctrl-Alt-Shift + Left`	Move Right edge to the Left
 	* `Ctrl-Alt-Shift + Right`	Move Right edge to the Right
@@ -75,6 +76,9 @@ HammerSpoon config file - by S1ngS1ng
 	* `Alt-Command-Shift + Right`	Move Left edge to the Right
 	* `Alt-Command-Shift + Up`		Move Top edge Up
 	* `Alt-Command-Shift + Down`	Move Top edge Down
+* Windows-like window cycle (Just like winKey + left/right on Windows OS)
+    * `Ctrl-Alt-Command + u`    Move window to the "relative" left and resize to half of the screen
+    * `Ctrl-Alt-Command + i`    Move window to the "relative" right and resize to half of the screen
 
 ## VOX
 * `Alt-Command-Shift + J` Toggle Play and Pause

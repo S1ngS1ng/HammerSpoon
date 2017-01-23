@@ -11,6 +11,7 @@ HammerSpoon config file - by S1ngS1ng
     * 将当前窗口移动到另一屏幕
     * **直接**将窗口大小设置为当前的一半（上下左右四个方向）
     * 向**任意**方向调整窗口大小
+    * **新功能** 类 Windows 的窗口移动，作用与 Windows 系统下的 `winKey + left/right` 一致
 * **新功能** [VOX 音乐播放器](./vox-control.lua) - 已加入官方 API，可以通过 [hs.vox](http://www.hammerspoon.org/docs/hs.vox.html) 调用。提供如下接口：
     * 播放、暂停、下一首、上一首、快进、快退、调整音量等基本操作
     * 添加 URL 到 VOX, 播放 URL 以及显示/隐藏播放列表等高级功能
@@ -79,6 +80,9 @@ HammerSpoon config file - by S1ngS1ng
 	* `Alt-Command-Shift + Right` - 左边右移（窗口变小）
 	* `Alt-Command-Shift + Up` - 上边上移（窗口变大）
 	* `Alt-Command-Shift + Down` - 上边下移（窗口变小）
+* 类 Windows 的窗口移动（调整窗口位置至相对于当前窗口的左右，效果请参考 Windows 系统下的快捷键 `win + 左/右`）
+    * `Ctrl-Alt-Command + u`    将窗口移至相对于当前窗口的左方，并将窗口调整至二分之一屏幕大小
+    * `Ctrl-Alt-Command + i`    将窗口移至相对于当前窗口的右方，并将窗口调整至二分之一屏幕大小
 
 ## VOX
 * `Alt-Command-Shift + J` 播放/暂停
