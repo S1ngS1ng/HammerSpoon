@@ -113,7 +113,7 @@ local function cycleLeft()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
     local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
-    local previousScreen = screenArr[(currentIndex - indexDiff - 1) % 4 + indexDiff]
+    local previousScreen = screenArr[(currentIndex - indexDiff - 1) % #hs.screen.allScreens() + indexDiff]
     this.window:moveToScreen(previousScreen)
     rightHalf()
   else 
@@ -129,7 +129,7 @@ local function cycleRight()
     rightHalf()
   else
     local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
-    local nextScreen = screenArr[(currentIndex - indexDiff + 1) % 4 + indexDiff]
+    local nextScreen = screenArr[(currentIndex - indexDiff + 1) % #hs.screen.allScreens() + indexDiff]
     this.window:moveToScreen(nextScreen)
     leftHalf()
   end
