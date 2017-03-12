@@ -6,6 +6,8 @@ hs.window.animationDuration = 0
 grid = require "hs.grid"
 grid.setMargins('0, 0')
 
+module = {}
+
 -- Set screen watcher, in case you connect a new monitor, or unplug a monitor
 screens = {}
 screenArr = {}
@@ -74,80 +76,80 @@ end
 --            ** Keybinding configurations locate at bottom **          --
 -- -----------------------------------------------------------------------
 
-local function maximizeWindow()
+module.maximizeWindow = function ()
   local this = current:new()
   hs.grid.maximizeWindow(this.window)
 end
 
-local function centerOnScreen()
+module.centerOnScreen = function ()
   local this = current:new()
   this.window:centerOnScreen(this.screen)
 end
 
-local function throwLeft()
+module.throwLeft = function ()
   local this = current:new()
   this.window:moveOneScreenWest()
 end
 
-local function throwRight()
+module.throwRight = function ()
   local this = current:new()
   this.window:moveOneScreenEast()
 end
 
-local function leftHalf()
+module.leftHalf = function ()
   local this = current:new()
   local cell = Cell(0, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
   this.window.setShadows(true)
 end
 
-local function rightHalf()
+module.rightHalf = function ()
   local this = current:new()
   local cell = Cell(0.5 * this.screenGrid.w, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
 -- Windows-like cycle left
-local function cycleLeft()
+module.cycleLeft = function ()
   local this = current:new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
     local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
     local previousScreen = screenArr[(currentIndex - indexDiff - 1) % #hs.screen.allScreens() + indexDiff]
     this.window:moveToScreen(previousScreen)
-    rightHalf()
+    module.rightHalf()
   else 
-    leftHalf()
+    module.leftHalf()
   end
 end
 
 -- Windows-like cycle right
-local function cycleRight()
+module.cycleRight = function ()
   local this = current:new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
-    rightHalf()
+    module.rightHalf()
   else
     local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
     local nextScreen = screenArr[(currentIndex - indexDiff + 1) % #hs.screen.allScreens() + indexDiff]
     this.window:moveToScreen(nextScreen)
-    leftHalf()
+    module.leftHalf()
   end
 end
 
-local function topHalf()
+module.topHalf = function ()
   local this = current:new()
   local cell = Cell(0, 0, this.screenGrid.w, 0.5 * this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
-local function bottomHalf()
+module.bottomHalf = function ()
   local this = current:new()
   local cell = Cell(0, 0.5 * this.screenGrid.h, this.screenGrid.w, 0.5 * this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
-local function rightToLeft()
+module.rightToLeft = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w - 1, this.windowGrid.h)
   if this.windowGrid.w > 1 then
@@ -157,7 +159,7 @@ local function rightToLeft()
   end
 end
 
-local function rightToRight()
+module.rightToRight = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w + 1, this.windowGrid.h)
   if this.windowGrid.w < this.screenGrid.w - this.windowGrid.x then
@@ -167,7 +169,7 @@ local function rightToRight()
   end
 end
 
-local function bottomUp()
+module.bottomUp = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w, this.windowGrid.h - 1)
   if this.windowGrid.h > 1 then
@@ -177,7 +179,7 @@ local function bottomUp()
   end
 end
 
-local function bottomDown()
+module.bottomDown = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w, this.windowGrid.h + 1)
   if this.windowGrid.h < this.screenGrid.h - this.windowGrid.y then
@@ -187,7 +189,7 @@ local function bottomDown()
   end
 end
 
-local function leftToLeft()
+module.leftToLeft = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x - 1, this.windowGrid.y, this.windowGrid.w + 1, this.windowGrid.h)
   if this.windowGrid.x > 0 then
@@ -197,7 +199,7 @@ local function leftToLeft()
   end
 end
 
-local function leftToRight()
+module.leftToRight = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x + 1, this.windowGrid.y, this.windowGrid.w - 1, this.windowGrid.h)
   if this.windowGrid.w > 1 then
@@ -207,7 +209,7 @@ local function leftToRight()
   end
 end
 
-local function topUp()
+module.topUp = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y - 1, this.windowGrid.w, this.windowGrid.h + 1)
   if this.windowGrid.y > 0 then
@@ -217,7 +219,7 @@ local function topUp()
   end
 end
 
-local function topDown()
+module.topDown = function ()
   local this = current:new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y + 1, this.windowGrid.w, this.windowGrid.h - 1)
   if this.windowGrid.h > 1 then
@@ -227,54 +229,4 @@ local function topDown()
   end
 end
 
--- -----------------------------------------------------------------------
---                           ** Key Binding **                          --
--- -----------------------------------------------------------------------
-hk = require "hs.hotkey"
--- * Key Binding Utility
---- Bind hotkey for window management.
--- @function windowBind
--- @param {table} hyper - hyper key set
--- @param { ...{key=value} } keyFuncTable - multiple hotkey and function pairs
---   @key {string} hotkey
---   @value {function} callback function
-local function windowBind(hyper, keyFuncTable)
-  for key,fn in pairs(keyFuncTable) do
-    hk.bind(hyper, key, fn)
-  end
-end
-
--- * Move window to screen
-windowBind({"ctrl", "alt"}, {
-  left = throwLeft,
-  right = throwRight
-})
--- * Set Window Position on screen
-windowBind({"ctrl", "alt", "cmd"}, {
-  m = maximizeWindow,    -- ⌃⌥⌘ + M
-  c = centerOnScreen,    -- ⌃⌥⌘ + C
-  left = leftHalf,       -- ⌃⌥⌘ + ←
-  right = rightHalf,     -- ⌃⌥⌘ + →
-  up = topHalf,          -- ⌃⌥⌘ + ↑
-  down = bottomHalf      -- ⌃⌥⌘ + ↓
-})
--- * Set Window Position on screen
-windowBind({"ctrl", "alt", "shift"}, {
-  left = rightToLeft,      -- ⌃⌥⇧ + ←
-  right = rightToRight,    -- ⌃⌥⇧ + →
-  up = bottomUp,           -- ⌃⌥⇧ + ↑
-  down = bottomDown        -- ⌃⌥⇧ + ↓
-})
--- * Set Window Position on screen
-windowBind({"alt", "cmd", "shift"}, {
-  left = leftToLeft,      -- ⌥⌘⇧ + ←
-  right = leftToRight,    -- ⌥⌘⇧ + →
-  up = topUp,             -- ⌥⌘⇧ + ↑
-  down = topDown          -- ⌥⌘⇧ + ↓
-})
-
--- * Windows-like cycle
-windowBind({"ctrl", "alt", "cmd"}, {
-  u = cycleLeft,          -- ⌃⌥⌘ + u
-  i = cycleRight          -- ⌃⌥⌘ + i
-})
+return module
