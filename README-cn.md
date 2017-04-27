@@ -52,10 +52,10 @@ HammerSpoon config file - by S1ngS1ng
 * 下载、拷贝或者直接 `git clone` 这些文件：
     * [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua) - 主程序入口
     * [key-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/key-binding.lua) - 窗口管理快捷键配置
-    * [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) - 窗口管理
-    * [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) - VOX 播放器控制
     * [vim-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vim-binding.lua) - 类 Vim 快捷键绑定
-* 将 `init.lua`, `window-management.lua`, `key-binding.lua`, `vox.control.lua` 和 `vim-binding.lua` 放到 `~/.hammerspoon` 路径下
+    * [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) - VOX 播放器控制
+    * [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) - 窗口管理
+* 将`init.lua`, `key-binding.lua`, `vim-binding.lua`, `vox-control.lua` 和 `window-management.lua` 放到 `~/.hammerspoon` 路径下
 
 # 快捷键
 ## 窗口管理

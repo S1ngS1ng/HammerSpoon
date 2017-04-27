@@ -48,8 +48,13 @@ HammerSpoon config file - by S1ngS1ng
 
 # Install
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
-* Download, Copy or `git clone` [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua), [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua), [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) and [vim-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vim-binding.lua)
-* Put `init.lua`, `window-management.lua`, `key-binding.lua`, `vox.control.lua` and `vim-binding.lua` in ~/.hammerspoon
+* Download, Copy or `git clone` the following files:
+    * [init.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/init.lua) - Main entrance
+    * [key-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/key-binding.lua) - Key mapping for window-management
+    * [vim-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vim-binding.lua) - vim-like key binding
+    * [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) - VOX player control
+    * [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) - Window management
+* Put `init.lua`, `key-binding.lua`, `vim-binding.lua`, `vox-control.lua` and `window-management.lua` in ~/.hammerspoon
 
 # Shortcuts
 
