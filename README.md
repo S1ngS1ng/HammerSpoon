@@ -60,50 +60,50 @@ HammerSpoon config file - by S1ngS1ng
 
 ## Window Management
 * Move window to another screen
-	* `Ctrl-Alt + Left`	Set current window to the Left screen
-	* `Ctrl-Alt + Right`	Set current window to the Right screen
+	* `Ctrl-Alt + Left` - Set current window to the Left screen
+	* `Ctrl-Alt + Right` - Set current window to the Right screen
 * Set window size to full screen
 	* `Ctrl-Alt-Command + M`
 * Set window to center (keep window height)
 	* `Ctrl-Alt-Command + C`
 * Set window size to **EXACTLY** half of the current screen
-	* `Ctrl-Alt-Command + Left`	    Half the width, stick to Left
-	* `Ctrl-Alt-Command + Right`	Half the width, stick to Right
-	* `Ctrl-Alt-Command + Up`		Half the width, stick to Top
-	* `Ctrl-Alt-Command + Down`	    Half the width, stick to Bottom
+	* `Ctrl-Alt-Command + Left` - Half the width, stick to Left
+	* `Ctrl-Alt-Command + Right` - Half the width, stick to Right
+	* `Ctrl-Alt-Command + Up` - Half the width, stick to Top
+	* `Ctrl-Alt-Command + Down` - Half the width, stick to Bottom
 * Adjust window size (anchor top, left)
-	* `Ctrl-Alt-Shift + Left`	Move Right edge to the Left
-	* `Ctrl-Alt-Shift + Right`	Move Right edge to the Right
-	* `Ctrl-Alt-Shift + Up`		Move Bottom edge Up
-	* `Ctrl-Alt-Shift + Down`	Move Bottom edge Down
+	* `Ctrl-Alt-Shift + Left` - Move Right edge to the Left
+	* `Ctrl-Alt-Shift + Right` - Move Right edge to the Right
+	* `Ctrl-Alt-Shift + Up` - Move Bottom edge Up
+	* `Ctrl-Alt-Shift + Down` - Move Bottom edge Down
 * Adjust window size (anchor right, bottom)
-	* `Alt-Command-Shift + Left`	Move Left edge to the Left
-	* `Alt-Command-Shift + Right`	Move Left edge to the Right
-	* `Alt-Command-Shift + Up`		Move Top edge Up
-	* `Alt-Command-Shift + Down`	Move Top edge Down
+	* `Alt-Command-Shift + Left` - Move Left edge to the Left
+	* `Alt-Command-Shift + Right` - Move Left edge to the Right
+	* `Alt-Command-Shift + Up` - Move Top edge Up
+	* `Alt-Command-Shift + Down` - Move Top edge Down
 * Windows-like window cycle (Just like winKey + left/right on Windows OS)
-    * `Ctrl-Alt-Command + u`    Move window to the "relative" left and resize to half of the screen
-    * `Ctrl-Alt-Command + i`    Move window to the "relative" right and resize to half of the screen
+    * `Ctrl-Alt-Command + u` - Move window to the "relative" left and resize to half of the screen
+    * `Ctrl-Alt-Command + i` - Move window to the "relative" right and resize to half of the screen
 
 ## VOX
-* `Alt-Command-Shift + J` Toggle Play and Pause
-* `Alt-Command-Shift + H` Previous song
-* `Alt-Command-Shift + L` Next song
-* `Alt-Command-Shift + K` Display track information
-* `Alt-Command-Shift + I` Toggle Playlist
+* `Alt-Command-Shift + J` - Toggle Play and Pause
+* `Alt-Command-Shift + H` - Previous song
+* `Alt-Command-Shift + L` - Next song
+* `Alt-Command-Shift + K` - Display track information
+* `Alt-Command-Shift + I` - Toggle Playlist
 
 ## VIM-like key binding (I already map `Ctrl` to `CapsLock`)
 * Basic
-    * `Ctrl + h` Left
-    * `Ctrl + j` Down
-    * `Ctrl + k` Up
-    * `Ctrl + l` Right
+    * `Ctrl + h` - Left
+    * `Ctrl + j` - Down
+    * `Ctrl + k` - Up
+    * `Ctrl + l` - Right
 * Use with `Alt`
-    * `Ctrl-Alt + H` Move caret Left by 1 word
-    * `Ctrl-Alt + L` Move caret Right by 1 word
+    * `Ctrl-Alt + H` - Move caret Left by 1 word
+    * `Ctrl-Alt + L` - Move caret Right by 1 word
 * Use with `Cmd`
-    * `Ctrl-Cmd + H` Move caret to the start of line
-    * `Ctrl-Cmd + L` Move caret to the end of line
+    * `Ctrl-Cmd + H` - Move caret to the start of line
+    * `Ctrl-Cmd + L` - Move caret to the end of line
 * Use with `Shift`
     * For all the listed above, hold `Shift` at the same time will do selection
 
