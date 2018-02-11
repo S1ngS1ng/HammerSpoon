@@ -2,6 +2,8 @@
 --                         ** Something Global **                       --
 -- -----------------------------------------------------------------------
   -- Comment out this following line if you wish to see animations
+local windowMeta = {}
+window = require "hs.window"
 hs.window.animationDuration = 0
 grid = require "hs.grid"
 grid.setMargins('0, 0')
@@ -53,22 +55,22 @@ function Cell(x, y, w, h)
   return hs.geometry(x, y, w, h)
 end
 
--- Please leave a comment if you have any suggestions
--- I know this looks weird, but it works :C
-current = {}
-function init()
-  current.win = hs.window.focusedWindow()
-  current.scr = hs.window.focusedWindow():screen()
-end
-
-function current:new()
-  init()
-  o = {}
-  setmetatable(o, self)
-  o.window, o.screen = self.win, self.scr
-  o.screenGrid = grid.getGrid(self.scr)
-  o.windowGrid = grid.get(self.win)
-  return o
+-- Bind new method to windowMeta
+function windowMeta.new()
+  local self = setmetatable(windowMeta, {
+    -- Treate table like a function
+    -- Event listener when windowMeta() is called
+    __call = function (cls, ...)
+      return cls.new(...)
+    end,
+  })
+  
+  self.window = window.focusedWindow()
+  self.screen = window.focusedWindow():screen()
+  self.windowGrid = grid.get(self.window)
+  self.screenGrid = grid.getGrid(self.screen)
+  
+  return self
 end
 
 -- -----------------------------------------------------------------------
@@ -77,44 +79,44 @@ end
 -- -----------------------------------------------------------------------
 
 module.maximizeWindow = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   hs.grid.maximizeWindow(this.window)
 end
 
 module.centerOnScreen = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   this.window:centerOnScreen(this.screen)
 end
 
 module.throwLeft = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   this.window:moveOneScreenWest()
 end
 
 module.throwRight = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   this.window:moveOneScreenEast()
 end
 
 module.leftHalf = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(0, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
   this.window.setShadows(true)
 end
 
 module.rightHalf = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(0.5 * this.screenGrid.w, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
 -- Windows-like cycle left
 module.cycleLeft = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
-    local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
+    local currentIndex = hs.fnutils.indexOf(screenArr, this.screen)
     local previousScreen = screenArr[(currentIndex - indexDiff - 1) % #hs.screen.allScreens() + indexDiff]
     this.window:moveToScreen(previousScreen)
     module.rightHalf()
@@ -125,12 +127,12 @@ end
 
 -- Windows-like cycle right
 module.cycleRight = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
     module.rightHalf()
   else
-    local currentIndex = hs.fnutils.indexOf(screenArr, current.scr)
+    local currentIndex = hs.fnutils.indexOf(screenArr, this.screen)
     local nextScreen = screenArr[(currentIndex - indexDiff + 1) % #hs.screen.allScreens() + indexDiff]
     this.window:moveToScreen(nextScreen)
     module.leftHalf()
@@ -138,19 +140,19 @@ module.cycleRight = function ()
 end
 
 module.topHalf = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(0, 0, this.screenGrid.w, 0.5 * this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
 module.bottomHalf = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(0, 0.5 * this.screenGrid.h, this.screenGrid.w, 0.5 * this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
 module.rightToLeft = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w - 1, this.windowGrid.h)
   if this.windowGrid.w > 1 then
     grid.set(this.window, cell, this.screen)
@@ -160,7 +162,7 @@ module.rightToLeft = function ()
 end
 
 module.rightToRight = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w + 1, this.windowGrid.h)
   if this.windowGrid.w < this.screenGrid.w - this.windowGrid.x then
     grid.set(this.window, cell, this.screen)
@@ -170,7 +172,7 @@ module.rightToRight = function ()
 end
 
 module.bottomUp = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w, this.windowGrid.h - 1)
   if this.windowGrid.h > 1 then
     grid.set(this.window, cell, this.screen)
@@ -180,7 +182,7 @@ module.bottomUp = function ()
 end
 
 module.bottomDown = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w, this.windowGrid.h + 1)
   if this.windowGrid.h < this.screenGrid.h - this.windowGrid.y then
     grid.set(this.window, cell, this.screen)
@@ -190,7 +192,7 @@ module.bottomDown = function ()
 end
 
 module.leftToLeft = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x - 1, this.windowGrid.y, this.windowGrid.w + 1, this.windowGrid.h)
   if this.windowGrid.x > 0 then
     grid.set(this.window, cell, this.screen)
@@ -200,7 +202,7 @@ module.leftToLeft = function ()
 end
 
 module.leftToRight = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x + 1, this.windowGrid.y, this.windowGrid.w - 1, this.windowGrid.h)
   if this.windowGrid.w > 1 then
     grid.set(this.window, cell, this.screen)
@@ -210,7 +212,7 @@ module.leftToRight = function ()
 end
 
 module.topUp = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y - 1, this.windowGrid.w, this.windowGrid.h + 1)
   if this.windowGrid.y > 0 then
     grid.set(this.window, cell, this.screen)
@@ -220,7 +222,7 @@ module.topUp = function ()
 end
 
 module.topDown = function ()
-  local this = current:new()
+  local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y + 1, this.windowGrid.w, this.windowGrid.h - 1)
   if this.windowGrid.h > 1 then
     grid.set(this.window, cell, this.screen)
