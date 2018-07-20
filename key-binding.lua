@@ -1,4 +1,5 @@
 local wm = require('window-management')
+local ms = require('mouse-control')
 local hk = require "hs.hotkey"
 
 -- * Key Binding Utility
@@ -14,10 +15,17 @@ local function windowBind(hyper, keyFuncTable)
   end
 end
 
+local mouseBind = windowBind
+
 -- * Move window to screen
 windowBind({"ctrl", "alt"}, {
   left = wm.throwLeft,
   right = wm.throwRight
+})
+
+-- * Move mouse to next screen
+mouseBind({"ctrl", "cmd"}, {
+  m = ms.moveNext
 })
 
 -- * Set Window Position on screen
