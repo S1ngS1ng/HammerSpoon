@@ -19,7 +19,7 @@ HammerSpoon config file - by S1ngS1ng
 * **NEW Feature** [Global VIM-like Key Binding](./vim-binding.lua) (Thanks to [@A-RON](https://github.com/asmagill))
     * `Ctrl` + `hjkl` for `Left, Down, Up and Right`
     * Works with combinations of `Alt`, `Cmd` and `Shift`
-* **NEW Feature** [Mouse Move to next screen]
+* **NEW Feature** [Mouse Move to next screen](./mouse-control.lua)
     * Move mouse to next screen and center it
 
 # Example
