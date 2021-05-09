@@ -46,6 +46,11 @@ HammerSpoon config file - by S1ngS1ng
 
 ![Imgur](http://i.imgur.com/fiIfeXe.gif)
 
+## Bluetooth
+* When a particular device is connected (example bluetooth headphones) the volume will change to 25.
+
+* When they are disconnected the volume will go back to 0.
+
 # Install
 * Install [HammerSpoon](https://github.com/Hammerspoon/hammerspoon)  **FIRST** 
 * Download, Copy or `git clone` the following files:
@@ -54,7 +59,9 @@ HammerSpoon config file - by S1ngS1ng
     * [vim-binding.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vim-binding.lua) - vim-like key binding
     * [vox-control.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/vox-control.lua) - VOX player control
     * [window-management.lua](https://github.com/S1ngS1ng/HammerSpoon/blob/master/window-management.lua) - Window management
-* Put `init.lua`, `key-binding.lua`, `vim-binding.lua`, `vox-control.lua` and `window-management.lua` in ~/.hammerspoon
+    * [audio.md] - audio management
+* Put `init.lua`, `key-binding.lua`, `vim-binding.lua`, `vox-control.lua`, `audio.lua` and `window-management.lua` in ~/.hammerspoon
+* Replace `bluetooth_headphone_ssid` in audio.lua to your personal device ssid.
 
 # Shortcuts
 
