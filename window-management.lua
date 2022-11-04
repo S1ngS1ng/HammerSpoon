@@ -90,19 +90,18 @@ end
 
 module.throwLeft = function ()
   local this = windowMeta.new()
-  this.window:moveOneScreenWest()
+  this.window:moveOneScreenWest(true, true)
 end
 
 module.throwRight = function ()
   local this = windowMeta.new()
-  this.window:moveOneScreenEast()
+  this.window:moveOneScreenEast(true, true)
 end
 
 module.leftHalf = function ()
   local this = windowMeta.new()
   local cell = Cell(0, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
-  this.window.setShadows(true)
 end
 
 module.rightHalf = function ()
